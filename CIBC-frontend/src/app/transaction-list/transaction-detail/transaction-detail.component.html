@@ -1,0 +1,73 @@
+<div mat-dialog-content>
+    <table class="table">
+        <thead>
+            <th 
+                tabindex="9" 
+                aria-label="Field Name">
+                Field Name
+            </th>
+            <th 
+                tabindex="9" 
+                aria-label="Requirements">
+                Requirements
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td 
+                    tabindex="10" 
+                    aria-label="ID">
+                    ID
+                </td>
+                <td 
+                    tabindex="10" 
+                    [attr.aria-label]="data.id">
+                    {{data.id}}
+                </td>
+            </tr>
+            <tr>
+                <td 
+                    tabindex="11" 
+                    aria-label="Date">
+                    Date
+                </td>
+                <td 
+                    tabindex="11" 
+                    [attr.aria-label]="formatDate(data.date)">
+                    {{formatDate(data.date)}}
+                </td>
+            </tr>
+            <tr>
+                <td 
+                    tabindex="12" 
+                    aria-label="Comments">
+                    Comments
+                </td>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <input 
+                            matInput 
+                            [(ngModel)]="comments" 
+                            tabindex="12" 
+                            [attr.aria-label]="comments">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div mat-dialog-actions>
+    <button 
+        mat-button 
+        (click)="onNoClick()" 
+        tabindex="13" 
+        aria-label="No Thanks">
+        No Thanks
+    </button>
+    <button 
+        mat-button 
+        [mat-dialog-close]="{_id: data._id, comments}" 
+        cdkFocusInitial aria-label="Save">
+        Save
+    </button>
+</div>

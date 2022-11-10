@@ -1,0 +1,112 @@
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label 
+            tabindex="1" 
+            aria-label="Enter a date range">
+            Enter a date range
+        </mat-label>
+        <mat-date-range-input 
+            [rangePicker]="picker" 
+            tabindex="2" 
+            aria-label="Date Picker">
+            <input 
+                matStartDate 
+                placeholder="Start date" 
+                (dateChange)="dateChanged($event, true)">
+            <input 
+                matEndDate
+                placeholder="End date"
+                (dateChange)="dateChanged($event, false)">
+        </mat-date-range-input>
+        <mat-hint 
+            tabindex="3" 
+            aria-label="Date Format MM/DD/YYYY">
+            MM/DD/YYYY – MM/DD/YYYY
+        </mat-hint>
+        <mat-datepicker-toggle 
+            matSuffix 
+            [for]="picker" 
+            tabindex="4">
+        </mat-datepicker-toggle>
+        <mat-date-range-picker 
+            #picker 
+            tabindex="5">
+        </mat-date-range-picker>
+    </mat-form-field>
+
+    <button 
+        mat-raised-button 
+        color="primary" 
+        (click)="getTransactionList()" 
+        tabindex="6" 
+        aria-label="Search Button">
+        GO!
+    </button>
+
+    <ng-template 
+        let-transactionList 
+        [ngIf]="(transactionList$ | async)">
+        <table 
+            class="table" 
+            *ngIf="transactionList && transactionList.length > 0; else elseBlock" 
+            aria-label="Transaction List Table">
+            <thead>
+                <th 
+                    tabindex="7" 
+                    aria-label="ID">
+                    ID
+                </th>
+                <th 
+                    tabindex="7" 
+                    aria-label="Date">
+                    Date
+                </th>
+                <th 
+                    tabindex="7" 
+                    aria-label="Comments">
+                    Comments
+                </th>
+                <th 
+                    tabindex="7" 
+                    aria-label="Action">
+                    Action
+                </th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transaction of transactionList">
+                    <td 
+                        tabindex="8" 
+                        [attr.aria-label]="transaction.id">
+                        {{transaction.id}}
+                    </td>
+                    <td 
+                        tabindex="8" 
+                        [attr.aria-label]="formatDate(transaction.date)">
+                        {{formatDate(transaction.date)}}
+                    </td>
+                    <td 
+                        tabindex="8" 
+                        [attr.aria-label]="transaction.Comments">
+                        {{transaction.Comments}}
+                    </td>
+                    <td>
+                        <button 
+                            (click)="openDialog(transaction)" 
+                            tabindex="8" 
+                            aria-label="View Transaction">
+                            View
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #elseBlock>
+            <div>
+                No Transactions Found!
+            </div>
+        </ng-template>
+    </ng-template>
+
+
+</div>
+

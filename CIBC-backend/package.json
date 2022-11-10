@@ -1,0 +1,19 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "CIBC app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "author": "Sikandar Shahbaz",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.0",
+    "nodemon": "^2.0.20"
+  }
+}

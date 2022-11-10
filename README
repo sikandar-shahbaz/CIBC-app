@@ -1,0 +1,15 @@
+In order to run the app,
+- contact administrator about adding your public IP address to the MongoDB authorized list
+- run the backend app using "npm run dev"
+- run the frontend app using "ng serve"
+
+
+Improvements
+If I had more time, I would work on the following improvements
+- Adding testing
+    - Tech Stack: Jest, Istanbul, Selenium
+    - Unit Testing
+    - Integration Testing
+    - End-to-End Testing
+- Integrating More Styling
+- More Accessability Features
